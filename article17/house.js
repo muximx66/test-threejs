@@ -18,6 +18,7 @@ const floorGeometry = new THREE.BoxGeometry(1000,500,100);
 const floorMaterial = new THREE.MeshLambertMaterial({
     map:shuiniTexture,
     aoMap:shuiniTexture,
+    side:THREE.FrontSide,
 });
 const floorMesh = new THREE.Mesh(floorGeometry,floorMaterial);
 floorMesh.rotateX(Math.PI/2);
@@ -37,7 +38,11 @@ sideWallWindowPath.lineTo(100,400);
 sideWallWindowPath.lineTo(-100,400);
 sideWallShape.holes.push(sideWallWindowPath);
 const sideWallGeometry = new THREE.ExtrudeGeometry(sideWallShape,{depth:100});
-const sideWallMaterial = new THREE.MeshLambertMaterial({map:zhuanTexture,aoMap:zhuanTexture});
+const sideWallMaterial = new THREE.MeshLambertMaterial({
+    map:zhuanTexture,
+    aoMap:zhuanTexture,
+    side:THREE.FrontSide,
+});
 const sideWallMesh = new THREE.Mesh(sideWallGeometry,sideWallMaterial);
 const sideWallMesh2 = sideWallMesh.clone();
 sideWallMesh.rotateY(Math.PI/2);
@@ -82,7 +87,10 @@ frontWallMesh.translateY(-200);
 frontWallMesh.translateZ(150);
 
 const roofGeometry = new THREE.BoxGeometry(1100,450,50);
-const roofMaterial = new THREE.MeshLambertMaterial({color:new THREE.Color('lightpink')});
+const roofMaterial = new THREE.MeshLambertMaterial({
+    map:wapianTexture,
+    aoMap:wapianTexture,
+});
 const roofMesh = new THREE.Mesh(roofGeometry,roofMaterial);
 const roofMesh2 = roofMesh.clone();
 roofMesh.rotateX(Math.PI/4);
@@ -105,7 +113,10 @@ const doorStepShape = new THREE.Shape([
     new THREE.Vector2(0,80),
 ]);
 const doorStepGeometry = new THREE.ExtrudeGeometry(doorStepShape,{depth:200});
-const doorStepMaterial = new THREE.MeshLambertMaterial({color:new THREE.Color('#555555')});
+const doorStepMaterial = new THREE.MeshLambertMaterial({
+    map:shuiniTexture,
+    aoMap:shuiniTexture,
+});
 const doorStepMesh = new THREE.Mesh(doorStepGeometry,doorStepMaterial);
 doorStepMesh.rotateY(1.5*Math.PI);
 doorStepMesh.translateY(-550);
