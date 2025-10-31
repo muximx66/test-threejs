@@ -16,9 +16,14 @@ camera.lookAt(0,300,0);
 
 const renderer = new THREE.WebGLRenderer();
 window.document.body.appendChild(renderer.domElement);
+const clock = new THREE.Clock();
+let hslColor = 0.002;
 const render = ()=>{
-    cylinder.material.map.offset.y += 0.01;
-    cylinder.rotation.y += 0.01;
+    const delta = clock.getDelta();
+    // cylinder.material.map.offset.y += 0.01;
+    cylinder.material.alphaMap.offset.y+= delta*0.5;
+    cylinder.rotation.y += delta*0.5;
+    cylinder.material.color.setHSL(hslColor+=0.002,0.5,0.5);
     renderer.setSize(width(),height());
     renderer.render(scene,camera);
     requestAnimationFrame(render);

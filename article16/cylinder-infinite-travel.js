@@ -8,7 +8,9 @@ texture.colorSpace = THREE.SRGBColorSpace;
 
 const cylinderGeometry = new THREE.CylinderGeometry(20,50,300,50,50,true);
 const cylinderMaterial = new THREE.MeshBasicMaterial({
-    map:texture,
+    // map:texture,
+    transparent:true,
+    alphaMap:texture,
     side:THREE.BackSide
 });
 
