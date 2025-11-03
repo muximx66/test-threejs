@@ -15,6 +15,7 @@ directionLight.position.set(-3000,3000,3000);
 const ambientLight = new THREE.AmbientLight(0xffffff);
 
 const scene = new THREE.Scene();
+scene.fog = new THREE.Fog(0xcccccc,7000,10000);
 scene.add(directionLight);
 scene.add(ambientLight);
 scene.add(house);
@@ -24,8 +25,12 @@ camera.position.set(3000,3000,3000);
 camera.lookAt(0,0,0);
 
 const renderer = new THREE.WebGLRenderer();
+const clock = new THREE.Clock();
+renderer.setClearColor(new THREE.Color('skyblue'));
 window.document.body.appendChild(renderer.domElement);
 const render = ()=>{
+    const delta = clock.getDelta();
+    house.rotateY(0.3*delta);
     renderer.setSize(width(),height());
     renderer.render(scene,camera);
     requestAnimationFrame(render);

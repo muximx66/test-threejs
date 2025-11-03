@@ -5,14 +5,42 @@ const zhuanTexture = new THREE.TextureLoader().load('/article17/zhuan.jpg');
 const shuiniTexture = new THREE.TextureLoader().load('/article17/shuini.png');
 const wapianTexture = new THREE.TextureLoader().load('/article17/wapian.png');
 const grassTexture = new THREE.TextureLoader().load('/article17/grass.png');
+const stepShuiniTexture = shuiniTexture.clone();
+
 zhuanTexture.colorSpace = THREE.SRGBColorSpace;
 zhuanTexture.wrapS = THREE.RepeatWrapping;
-zhuanTexture.repeat.x = 4;
+zhuanTexture.wrapT = THREE.RepeatWrapping;
+zhuanTexture.repeat.x = 0.001;
+zhuanTexture.repeat.y = 0.001;
+
 shuiniTexture.colorSpace = THREE.SRGBColorSpace;
 shuiniTexture.wrapS = THREE.RepeatWrapping;
-shuiniTexture.repeat.x = 4;
+shuiniTexture.wrapT = THREE.RepeatWrapping;
+shuiniTexture.repeat.x = 10;
+
+stepShuiniTexture.colorSpace = THREE.SRGBColorSpace;
+stepShuiniTexture.wrapS = THREE.RepeatWrapping;
+stepShuiniTexture.wrapT = THREE.RepeatWrapping;
+stepShuiniTexture.repeat.x = 0.001;
+stepShuiniTexture.repeat.y = 0.001;
+
 wapianTexture.colorSpace = THREE.SRGBColorSpace;
+
 grassTexture.colorSpace = THREE.SRGBColorSpace;
+grassTexture.wrapS = THREE.RepeatWrapping;
+grassTexture.wrapT = THREE.RepeatWrapping;
+grassTexture.repeat.x = 20;
+grassTexture.repeat.y = 20;
+
+const grassGeometry = new THREE.PlaneGeometry(100000,100000);
+const grassMaterial = new THREE.MeshLambertMaterial({
+    map:grassTexture,
+    aoMap:grassTexture,
+    side:THREE.DoubleSide
+});
+const grassMesh = new THREE.Mesh(grassGeometry,grassMaterial);
+grassMesh.translateY(-500);
+grassMesh.rotateX(-Math.PI/2);
 
 const floorGeometry = new THREE.BoxGeometry(1000,500,100);
 const floorMaterial = new THREE.MeshLambertMaterial({
@@ -114,8 +142,8 @@ const doorStepShape = new THREE.Shape([
 ]);
 const doorStepGeometry = new THREE.ExtrudeGeometry(doorStepShape,{depth:200});
 const doorStepMaterial = new THREE.MeshLambertMaterial({
-    map:shuiniTexture,
-    aoMap:shuiniTexture,
+    map:stepShuiniTexture,
+    aoMap:stepShuiniTexture,
 });
 const doorStepMesh = new THREE.Mesh(doorStepGeometry,doorStepMaterial);
 doorStepMesh.rotateY(1.5*Math.PI);
@@ -131,5 +159,6 @@ _house.add(frontWallMesh);
 _house.add(roofMesh);
 _house.add(roofMesh2);
 _house.add(doorStepMesh);
+_house.add(grassMesh);
 
 export const house = _house;
