@@ -25,6 +25,9 @@ scene.add(group);
 const axesHelper = new THREE.AxesHelper(1000);
 scene.add(axesHelper);
 
+const groupAxesHelper = new THREE.AxesHelper(500);
+group.add(groupAxesHelper);
+
 const camera = new THREE.PerspectiveCamera(60,aspect(),1,1000);
 camera.position.set(300,400,300);
 camera.lookAt(0,0,0);
