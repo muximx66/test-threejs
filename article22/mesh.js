@@ -22,19 +22,28 @@ const normals = new THREE.BufferAttribute(
         0,0,1,
         0,0,1,
         0,0,1,
-        1,1,0,
+        1,1,1,
+        1,1,1,
+        1,1,1,
+        // 1,1,1,
+        // 1,1,0,
+        // 1,1,0,
+        // 1,1,0,
     ]),
     3
 );
 
 geometry.attributes.position = points;
 geometry.index = indexes;
-geometry.attributes.normal = normals;
+// geometry.attributes.normal = normals;
+geometry.computeVertexNormals();
 
 
 const material = new THREE.MeshPhongMaterial({
     color:new THREE.Color('lightblue'),
-    shininess:1000
+    shininess:2000
 });
+
+console.log(geometry.attributes)
 
 export const mesh = new THREE.Mesh(geometry,material);
