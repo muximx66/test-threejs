@@ -29,7 +29,7 @@ const box2 = box.clone();
 box2.translateX(300);
 
 const group = new THREE.Group();
-group.add(plane,box,box2);
+group.add(box,box2);
 
 // ambientLight && group.add(ambientLight);
 light && group.add(light);
@@ -40,9 +40,34 @@ hemisphereHelper && group.add(hemisphereHelper);
 const scene = new THREE.Scene();
 scene.add(group);
 
-scene.add(new THREE.AxesHelper(500));
+// scene.add(new THREE.AxesHelper(500));
+// scene.add(new THREE.GridHelper(
+//     1000,
+//     10,
+//     new THREE.Color('green'),
+//     new THREE.Color('blue'))
+// );
 
-const camera = new THREE.PerspectiveCamera(60,aspect(),1,2000);
+const dir = new THREE.Vector3(-1,-2,0);
+dir.normalize();
+const origin = new THREE.Vector3(0,0,0);
+scene.add(new THREE.ArrowHelper(dir,origin,300,new THREE.Color('yellow')));
+
+scene.add(new THREE.PolarGridHelper(
+    1000,
+    10,
+    3,
+    20,
+    new THREE.Color('pink'),
+    new THREE.Color('lightgreen')
+));
+
+const camera2 = new THREE.PerspectiveCamera(60,16/9,100,1000);
+camera2.position.set(-300,300,0);
+camera2.lookAt(0,0,0);
+scene.add(new THREE.CameraHelper(camera2));
+
+const camera = new THREE.PerspectiveCamera(30,aspect(),1,3000);
 camera.position.set(500,500,800);
 camera.lookAt(0,0,0);
 
