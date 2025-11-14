@@ -11,9 +11,9 @@ hemisphereLight.lookAt(0,0,0);
 
 export const hemisphereHelper = new THREE.HemisphereLightHelper(hemisphereLight,100);
 
-const gui = new GUI();
-gui.add(hemisphereLight.position,'x').min(10).max(1000);
-gui.add(hemisphereLight.position,'y').min(10).max(1000);
-gui.add(hemisphereLight.position,'z').min(10).max(1000);
-gui.add(hemisphereLight,'color');
-gui.add(hemisphereLight,'groundColor');
+// const gui = new GUI();
+// gui.add(hemisphereLight.position,'x').min(10).max(1000);
+// gui.add(hemisphereLight.position,'y').min(10).max(1000);
+// gui.add(hemisphereLight.position,'z').min(10).max(1000);
+// gui.add(hemisphereLight,'color');
+// gui.add(hemisphereLight,'groundColor');

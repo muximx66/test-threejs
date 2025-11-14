@@ -1,9 +1,10 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { ambientLight } from './ambient-light.js'
-import { light,lightHelper } from './directional-light.js'
+// import { light,lightHelper } from './directional-light.js'
 // import { light,lightHelper } from './point-light.js'
 // import { light,lightHelper } from './spot-light.js'
+import { light,lightHelper } from './rectarea-light.js'
 import { hemisphereLight,hemisphereHelper } from './hemisphere-light.js'
 
 const width = ()=>window.innerWidth;
@@ -11,7 +12,7 @@ const height = ()=>window.innerHeight;
 const aspect = ()=>width()/height();
 
 const planeGometry = new THREE.PlaneGeometry(1000,1000);
-const planeMaterial = new THREE.MeshLambertMaterial({
+const planeMaterial = new THREE.MeshStandardMaterial({
     color:new THREE.Color('white')
 });
 const plane = new THREE.Mesh(planeGometry,planeMaterial);
@@ -19,7 +20,7 @@ plane.rotateX(-Math.PI/2);
 plane.translateZ(-50);
 
 const boxGeometry = new THREE.BoxGeometry(100,100,100);
-const boxMaterial = new THREE.MeshLambertMaterial({
+const boxMaterial = new THREE.MeshStandardMaterial({
     color:new THREE.Color('white')
 });
 const box = new THREE.Mesh(boxGeometry,boxMaterial);
