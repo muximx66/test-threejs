@@ -44,6 +44,8 @@ const material = new THREE.MeshPhongMaterial({
     shininess:2000
 });
 
+const material2 = new THREE.MeshNormalMaterial()
+
 console.log(geometry.attributes)
 
-export const mesh = new THREE.Mesh(geometry,material);
+export const mesh = new THREE.Mesh(geometry,material2);
